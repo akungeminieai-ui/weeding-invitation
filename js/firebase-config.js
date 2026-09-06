@@ -133,14 +133,15 @@ window.WishesService = {
     this.notify(updated);
 
     // 2. Kirim otomatis ke Google Sheets
-    if (this.apiUrl && this.apiUrl.trim() !== '' && !this.apiUrl.includes('MASUKKAN_URL')) {
+    if (this.apiUrl && this.apiUrl.trim() !== '') {
       try {
         await fetch(this.apiUrl, {
           method: 'POST',
           mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(wishObject)
         });
+        setTimeout(() => { this.fetchFromCloud(); }, 1800);
       } catch (err) {
         console.warn('Gagal sinkron ke Google Sheets:', err);
       }
