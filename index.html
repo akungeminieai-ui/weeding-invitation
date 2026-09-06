@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Undangan Pernikahan Yusron &amp; Zia - Kamis, 10 September 2026. Buka undangan untuk melihat detail acara &amp; menyampaikan ucapan doa.">
+  <title>Yusron and Zizi's Invitation</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=20260906_nav_right">
+</head>
+
+<body>
+
+  <!-- ==========================================================================
+       ARTBOARD 1: COVER / WELCOME SCREEN (CHAT BUBBLE CONCEPT)
+       ========================================================================== -->
+  <div id="cover-screen" class="cover-screen" title="Klik untuk langsung membuka undangan">
+    <div class="chat-bubbles-container">
+      <div id="single-chat-bubble" class="chat-bubble">
+        <span id="chat-typing-text" class="typing-text"></span><span class="typing-cursor"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN INVITATION WRAPPER (ARTBOARD 2 & DETAILS)
+       ========================================================================== -->
+  <div class="main-wrapper">
+
+    <!-- NAVBAR -->
+    <nav class="site-navbar" id="site-navbar">
+      <!-- Left Brand & Divider -->
+      <div class="navbar-brand">
+        <a href="#hero-section" class="navbar-logo" title="Wedding Invitation">
+          <img src="assets/IMG_3319.JPG.png" alt="Logo" class="navbar-logo-img">
+        </a>
+        <span class="logo-divider"></span>
+      </div>
+
+      <!-- Hamburger Button (Mobile: MENU =) -->
+      <button id="hamburger-toggle" class="hamburger-toggle" aria-label="Toggle Navigation">
+        <span class="hamburger-text">MENU</span>
+        <div class="hamburger-bars">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </div>
+      </button>
+
+      <!-- Main Nav Links -->
+      <ul class="navbar-menu" id="navbar-menu">
+        <li class="nav-item active" data-target="hero-section">
+          <a href="#hero-section" class="nav-link">
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item" data-target="location-section">
+          <a href="#location-section" class="nav-link">
+            <span>Location</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link">
+            <span>Foto Kita</span>
+          </a>
+        </li>
+        <li class="nav-item" data-target="wishes-section">
+          <a href="#wishes-section" class="nav-link">
+            <span>Kasi Ucapan</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- LIVE COUNTDOWN BANNER (CENTERED MONOSPACE TIMER) -->
+    <div class="top-countdown-banner">
+      <div id="live-countdown-timer" class="live-countdown-timer">
+        00D : 00:00:00
+      </div>
+    </div>
+
+    <!-- HERO SECTION / FIRST CONTENT AFTER WELCOME SCREEN -->
+    <section id="hero-section" class="hero-section reveal">
+      <div class="clean-hero-container">
+        <img src="assets/atas.png" alt="Yusron & Zizi" class="clean-hero-img" fetchpriority="high" decoding="async">
+      </div>
+    </section>
+
+    <!-- CURVED LINE DIVIDER BELOW FIRST CONTENT -->
+    <div class="curved-line-divider">
+      <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none" class="curved-line-svg">
+        <path d="M0 105 Q720 15 1440 105" stroke="#b0b5bd" stroke-width="1.8" fill="none" />
+      </svg>
+    </div>
+
+    <!-- MEMPELAI SECTION (CREATIVE POLAROID & DRAGGABLE TYPOGRAPHY DESIGN) -->
+    <section id="couple-section" class="mempelai-creative-section reveal">
+      <!-- Graphic Intro Image Replacing what's up & text lines -->
+      <div class="mempelai-intro-graphic">
+        <img src="assets/mempelai-intro.png?v=20260904" alt="Hai semuanya..." class="mempelai-intro-img" loading="lazy" decoding="async">
+      </div>
+
+      <!-- Graphic Details Image (Tanggal, Lokasi, Waktu) -->
+      <div class="mempelai-details-graphic">
+        <img src="assets/mempelai-details.png?v=20260904i" alt="Detail Tanggal & Lokasi" class="mempelai-details-img" loading="lazy" decoding="async">
+      </div>
+
+      <!-- Draggable Polaroids Container (Below Text) -->
+      <div class="polaroids-interactive-area" id="polaroids-area">
+        <div class="polaroids-row">
+          <!-- Left Polaroid Card -->
+          <div class="polaroid-card polaroid-left" title="Tahan & geser foto ini!">
+            <div class="polaroid-img-wrapper">
+              <img src="assets/ChatGPT Image Sep 6, 2026, 03_31_24 PM.png" alt="Yusron" style="object-position: left center;" loading="lazy" decoding="async">
+            </div>
+            <p class="polaroid-caption">Moment</p>
+          </div>
+
+          <!-- Right Polaroid Card -->
+          <div class="polaroid-card polaroid-right" title="Tahan & geser foto ini!">
+            <div class="polaroid-img-wrapper">
+              <img src="assets/polaroid-right.png?v=20260904" alt="Zizi" style="object-position: center center;" loading="lazy" decoding="async">
+            </div>
+            <p class="polaroid-caption">Alexandria</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- LOCATION SECTION -->
+    <section id="location-section" class="location-section reveal">
+      <div class="location-container">
+        <div class="location-graphic">
+          <img src="assets/lokasi.png?v=20260906" alt="Klik link di bawah untuk mendapatkan link akurat lokasi acara." class="location-img" loading="lazy" decoding="async">
+        </div>
+        <div class="location-actions">
+          <a href="https://maps.app.goo.gl/9WJ4JWKoMad7L8JG9" target="_blank" rel="noopener noreferrer"
+            class="btn-action btn-action-primary" title="Buka di Google Maps">
+            Lokasi
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY CTA SECTION — PIXEL IMAGE LINK -->
+    <section class="gallery-cta-section reveal active" id="gallery-cta">
+      <a href="gallery.html" class="gcta-img-link" id="btn-goto-gallery" title="Lihat Foto Kita">
+        <img src="assets/Group.png?v=20260904" alt="Foto Kita — klik untuk masuk ke galeri" class="gcta-pixel-img" decoding="async">
+        <div class="gcta-img-hover-overlay">
+          <span class="gcta-hover-text">Foto Kita →</span>
+        </div>
+      </a>
+    </section>
+
+    <!-- CURVED LINE DIVIDER BELOW GALLERY CTA / ABOVE WISHES SECTION -->
+    <div class="curved-line-divider">
+      <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none" class="curved-line-svg">
+        <path d="M0 105 Q720 15 1440 105" stroke="#b0b5bd" stroke-width="1.8" fill="none" />
+      </svg>
+    </div>
+
+    <!-- UCAPAN & RSVP SECTION (FIREBASE REAL-TIME / LOCALSTORAGE) -->
+    <section id="wishes-section" class="section wishes-section reveal">
+
+      <!-- Graphic Header Image -->
+      <div class="wishes-header-graphic">
+        <img src="assets/wishes-header.png?v=20260904" alt="Kasi doa serta ucapan terbaik kalian disini"
+          class="wishes-header-img" loading="lazy" decoding="async">
+      </div>
+
+      <div class="wishes-card">
+        <form id="wish-form">
+          <div class="form-group">
+            <label class="form-label" for="wish-name-input">Nama Lengkap</label>
+            <input type="text" id="wish-name-input" class="form-input" placeholder="Masukkan nama Anda..." required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="wish-status-select">Konfirmasi Kehadiran</label>
+            <select id="wish-status-select" class="form-select">
+              <option value="Hadir">Saya Akan Hadir</option>
+              <option value="Ragu-ragu">Masih Ragu-ragu</option>
+              <option value="Tidak Hadir">Maaf, Tidak Bisa Hadir</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="wish-message-input">Ucapan Terbaik Kalian</label>
+            <textarea id="wish-message-input" class="form-textarea"
+              placeholder="Tuliskan ucapan dan doa hangat Anda untuk Yusron & Zia..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit-wish">Kirim Ucapan</button>
+        </form>
+      </div>
+
+      <!-- Feed Ucapan Live -->
+      <div id="wishes-feed" class="wishes-feed">
+        <!-- Rendered dynamically by main.js -->
+      </div>
+    </section>
+
+  </div>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <span id="lightbox-close" class="lightbox-close">&times;</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Enlarged photo">
+    </div>
+  </div>
+
+  <!-- BACKGROUND AUDIO (AUTOMATIC & CONTINUOUS ACROSS PAGES) -->
+  <audio id="bg-audio" loop preload="metadata" src="assets/0903(2).MP3"></audio>
+
+  <!-- JavaScript Modules -->
+  <script src="js/firebase-config.js?v=20260907_fix_autoscroll"></script>
+  <script src="js/main.js?v=20260907_fix_autoscroll"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description"
+    content="Galeri Foto & Video Pernikahan Yusron & Zizi - Moodboard Scrapbook Interaktif.">
+  <title>Galeri Foto & Video - Yusron & Zizi</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=20260906_nav_right">
+</head>
+
+<body>
+
+  <!-- MAIN WRAPPER -->
+  <div class="main-wrapper" style="overflow: hidden; height: 100vh; width: 100vw;">
+
+    <!-- NAVBAR HEADER -->
+    <nav class="site-navbar" id="site-navbar" style="position: fixed; top: 0; left: 0; right: 0; z-index: 10000; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);">
+      <!-- Left Brand & Divider -->
+      <div class="navbar-brand">
+        <a href="index.html" class="navbar-logo" title="Kembali ke Undangan">
+          <img src="assets/IMG_3319.JPG.png" alt="Logo" class="navbar-logo-img">
+        </a>
+        <span class="logo-divider"></span>
+      </div>
+
+      <!-- Hamburger Button (Mobile: MENU =) -->
+      <button id="hamburger-toggle" class="hamburger-toggle" aria-label="Toggle Navigation">
+        <span class="hamburger-text">MENU</span>
+        <div class="hamburger-bars">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </div>
+      </button>
+
+      <!-- Main Nav Links -->
+      <ul class="navbar-menu" id="navbar-menu">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">
+            <span>Invitation</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#location-section" class="nav-link">
+            <span>Location</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a href="gallery.html" class="nav-link">
+            <span>Foto Kita</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="index.html#wishes-section" class="nav-link">
+            <span>Kasi Ucapan</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- LIVE COUNTDOWN BANNER -->
+    <div class="top-countdown-banner" style="position: fixed; top: 56px; left: 0; right: 0; z-index: 9999;">
+      <div id="live-countdown-timer" class="live-countdown-timer">
+        00D : 00:00:00
+      </div>
+    </div>
+
+    <!-- INFINITE INTERACTIVE CANVAS GALLERY CONTAINER -->
+    <div class="canvas-gallery-wrapper" id="canvas-wrapper">
+      <!-- Grid Background Pattern -->
+      <div class="canvas-grid-bg"></div>
+
+      <!-- Infinite Canvas Stage (Pan & Zoom Container) -->
+      <div class="canvas-stage" id="canvas-stage">
+
+        <!-- Card 1: Mountain Painting / Story -->
+        <div class="canvas-card" style="top: 1620px; left: 1600px; width: 230px; transform: rotate(-4deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-yellow">nothing esp, still feels nice</span>
+          <img src="assets/ChatGPT Image Sep 6, 2026, 03_31_24 PM.png" alt="Gallery Photo 1" class="canvas-card-img">
+        </div>
+
+        <!-- Card 2: Mempelai Intro Graphic -->
+        <div class="canvas-card" style="top: 1530px; left: 1920px; width: 220px; padding: 100px 30px 60px 30px; transform: rotate(3deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-cyan">Moments & Tasyakkuran</span>
+          <img src="assets/Tasyakkuran.png" alt="Gallery Photo 2" class="canvas-card-img">
+        </div>
+
+        <!-- Card 3: Polaroid Couple Zizi -->
+        <div class="canvas-card" style="top: 1610px; left: 2240px; width: 220px; transform: rotate(-2deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-green">Alexandria Zoo</span>
+          <img src="assets/polaroid-right.png" alt="Gallery Photo 3" class="canvas-card-img">
+        </div>
+
+        <!-- Card 4: Hero Coba Graphic -->
+        <div class="canvas-card" style="top: 1950px; left: 1580px; width: 240px; transform: rotate(5deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-pink">Eid Adha Moemnt</span>
+          <img src="assets/IMG_3232 2.jpg" alt="Gallery Photo 4" class="canvas-card-img">
+        </div>
+
+        <!-- Card 4: EID -->
+        <div class="canvas-card" style="top: 2600px; left: 1900px; width: 240px; transform: rotate(5deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-pink">First Meet Up</span>
+          <img src="assets/IMG_3356.jpg" alt="Gallery Photo 4" class="canvas-card-img">
+        </div>
+
+        <!-- Card 5: Special Story -->
+        <div class="canvas-card" style="top: 1910px; left: 1890px; width: 220px; transform: rotate(-1deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-yellow">Tiny moments</span>
+          <img src="assets/hero-painting.jpg" alt="Gallery Photo 5" class="canvas-card-img">
+        </div>
+
+        <!-- Card 6: VIDEO CARD - Tiktokan -->
+        <div class="canvas-card canvas-card-video" style="top: 2550px; left: 2200px; width: 310px; transform: rotate(-3deg);" title="Tahan &amp; geser video!">
+          <span class="canvas-tape-label tape-orange">Tiktokan dikit 🎥</span>
+          <div class="canvas-video-header">
+            <span>YUSRON &amp; ZIZI FILM</span>
+            <span>01:45</span>
+          </div>
+          <video controls playsinline loop preload="auto">
+            <source src="assets/VID_20260613232102836.mov" type="video/mp4">
+            <source src="assets/VID_20260613232102836.mov" type="video/quicktime">
+            Browser Anda belum mendukung pemutaran video.
+          </video>
+        </div>
+
+        <!-- Card: Akad Moment VIDEO -->
+        <div class="canvas-card canvas-card-video" style="top: 1930px; left: 2180px; width: 310px; transform: rotate(4deg);" title="Tahan &amp; geser video!">
+          <span class="canvas-tape-label tape-orange">Akad Moment 🎥</span>
+          <div class="canvas-video-header">
+            <span>SEDIKIT CUPLIKAN</span>
+            <span>01:45</span>
+          </div>
+          <video controls playsinline loop preload="auto">
+            <source src="assets/IMG_1421.mov" type="video/mp4">
+            <source src="assets/IMG_1421.mov" type="video/quicktime">
+            Browser Anda belum mendukung pemutaran video.
+          </video>
+        </div>
+
+        <!-- Card 7: Mempelai Details -->
+        <div class="canvas-card" style="top: 2300px; left: 1720px; width: 230px; transform: rotate(-3deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-pink">Save the date!</span>
+          <img src="assets/16:00 - selesai.png" alt="Gallery Photo 7" class="canvas-card-img">
+        </div>
+
+        <!-- Card 7: Mempelai Details -->
+        <div class="canvas-card" style="top: 2450px; left: 1600px; width: 230px; transform: rotate(5deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-pink">Foto FYP</span>
+          <img src="assets/IMG_3348.jpg" alt="Gallery Photo 7" class="canvas-card-img">
+        </div>
+
+         <!-- Card 7: Mempelai Details -->
+        <div class="canvas-card" style="top: 2300px; left: 1350px; width: 230px; transform: rotate(5deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-pink">Monorail Date</span>
+          <img src="assets/IMG_3353.jpg" alt="Gallery Photo 7" class="canvas-card-img">
+        </div>
+
+        <!-- Card 8: Romantic Painting -->
+        <div class="canvas-card" style="top: 2270px; left: 2020px; width: 220px; transform: rotate(2deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-cyan">cekrek</span>
+          <img src="assets/IMG_3349.jpg" alt="Gallery Photo 8" class="canvas-card-img" style="transform: scaleX(-1);">
+        </div>
+
+        <!-- Card 8: Romantic Painting -->
+        <div class="canvas-card" style="top: 2220px; left: 2300px; width: 220px; transform: rotate(-3deg);" title="Tahan & geser foto!">
+          <span class="canvas-tape-label tape-cyan">Moment</span>
+          <img src="assets/IMG_3318.JPG" alt="Gallery Photo 8" class="canvas-card-img" style="transform: scaleX(-1);">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FLOATING ZOOM CONTROLS BAR (BOTTOM RIGHT) -->
+    <div class="canvas-controls-bar">
+      <button id="btn-zoom-out" class="canvas-ctrl-btn" title="Zoom Out (-)">−</button>
+      <span id="zoom-display" class="canvas-zoom-value">100%</span>
+      <button id="btn-zoom-in" class="canvas-ctrl-btn" title="Zoom In (+)">+</button>
+      <button id="btn-zoom-reset" class="canvas-ctrl-btn" title="Reset Tampilan (100%)">🎯 Reset</button>
+    </div>
+
+    <!-- FLOATING HINT BAR (BOTTOM LEFT) -->
+    <div class="canvas-hint-bar">
+      🤏🏼 2 jari untuk zoom in/out • 🖐🏼 geser canvas & foto
+    </div>
+
+    <!-- BACKGROUND AUDIO (AUTOMATIC & CONTINUOUS ACROSS PAGES) -->
+    <audio id="bg-audio" loop preload="metadata" src="assets/0903(2).MP3"></audio>
+
+  </div>
+
+  <!-- JS SCRIPTS -->
+  <script src="js/main.js?v=20260907_unmuted_v1"></script>
+  <script src="js/canvas-board.js?v=20260907_unmuted_v1"></script>
+</body>
+
+</html>
