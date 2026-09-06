@@ -1,12 +1,16 @@
 /**
- * Firebase Firestore & LocalStorage Real-time Sync Engine
- * Handles saving & live listening of guest wishes and RSVP responses.
+ * Cloud Google Sheets & LocalStorage Sync Engine
+ * Menghubungkan Google Spreadsheet untuk menyimpan & menyinkronkan seluruh ucapan tamu secara online.
  */
 
-// LocalStorage Storage Key (Fallback & instant local cache)
+// ==========================================================================
+// PENTING: TEMPELKAN URL WEB APP GOOGLE APPS SCRIPT ANDA DI SINI
+// Contoh: "https://script.google.com/macros/s/AKfycbx.../exec"
+// ==========================================================================
+const GOOGLE_SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbzLlL-sbzMhg63AE0ehoJyfMV6oeQ0zwTeQQDbF5d_DdxtK_sTDlKqovvi9Yk1rkQY/exec";
+
 const LOCAL_STORAGE_KEY = 'yusron_zia_wedding_wishes';
 
-// Default initial wishes for pristine look (2 dummy wishes to showcase WhatsApp bubbles)
 const INITIAL_MOCK_WISHES = [
   {
     id: 'mock-1',
@@ -24,7 +28,6 @@ const INITIAL_MOCK_WISHES = [
   }
 ];
 
-// Helper to get local wishes
 function getLocalWishes() {
   const data = localStorage.getItem(LOCAL_STORAGE_KEY);
   if (!data) {
@@ -43,7 +46,6 @@ function getLocalWishes() {
   }
 }
 
-// Helper to save local wishes
 function saveLocalWish(newWish) {
   const current = getLocalWishes();
   const updated = [newWish, ...current];
@@ -51,24 +53,14 @@ function saveLocalWish(newWish) {
   return updated;
 }
 
-// Global Wishes Service API
 window.WishesService = {
-  db: null,
-  isFirebaseActive: false,
+  apiUrl: GOOGLE_SHEETS_API_URL,
   callbacks: [],
 
-  // Initialize service
-  init(firebaseInstance, dbInstance) {
-    if (dbInstance) {
-      this.db = dbInstance;
-      this.isFirebaseActive = true;
-      console.log('🔥 Firebase Firestore connected for real-time wishes!');
-    } else {
-      console.log('💾 LocalStorage fallback active for wishes & RSVP.');
-    }
+  init() {
+    this.fetchFromCloud();
   },
 
-  // Notify all subscribed listeners
   notify(wishes) {
     if (!Array.isArray(wishes) || wishes.length === 0) {
       wishes = getLocalWishes();
@@ -78,59 +70,82 @@ window.WishesService = {
     });
   },
 
-  // Subscribe to real-time updates
   subscribe(onUpdateCallback) {
     if (!this.callbacks.includes(onUpdateCallback)) {
       this.callbacks.push(onUpdateCallback);
     }
+    onUpdateCallback(getLocalWishes());
+    this.fetchFromCloud();
 
-    if (this.isFirebaseActive && this.db && window.firebaseFirestore) {
-      const { collection, query, orderBy, onSnapshot } = window.firebaseFirestore;
-      const q = query(collection(this.db, 'wishes'), orderBy('timestamp', 'desc'));
-      
-      return onSnapshot(q, (snapshot) => {
-        const wishes = [];
-        snapshot.forEach((doc) => {
-          wishes.push({ id: doc.id, ...doc.data() });
+    return () => {
+      this.callbacks = this.callbacks.filter(cb => cb !== onUpdateCallback);
+    };
+  },
+
+  async fetchFromCloud() {
+    if (!this.apiUrl || this.apiUrl.trim() === '' || this.apiUrl.includes('MASUKKAN_URL')) {
+      return;
+    }
+
+    try {
+      const response = await fetch(this.apiUrl);
+      if (!response.ok) return;
+      const json = await response.json();
+
+      if (json && json.status === 'success' && Array.isArray(json.data) && json.data.length > 0) {
+        const local = getLocalWishes();
+        const mergedMap = new Map();
+
+        // Cloud items first
+        json.data.forEach(item => {
+          const key = `${item.name}_${item.message}`;
+          mergedMap.set(key, item);
         });
-        this.notify(wishes);
-      }, (error) => {
-        console.warn('Firebase sync error, switching to LocalStorage:', error);
-        this.notify(getLocalWishes());
-      });
-    } else {
-      // Immediate trigger with current/initial wishes
-      const current = getLocalWishes();
-      onUpdateCallback(current);
-      
-      // Cross-tab storage listener
-      const listener = () => this.notify(getLocalWishes());
-      window.addEventListener('storage', listener);
-      return () => {
-        this.callbacks = this.callbacks.filter(cb => cb !== onUpdateCallback);
-        window.removeEventListener('storage', listener);
-      };
+
+        // Add any local items
+        local.forEach(item => {
+          const key = `${item.name}_${item.message}`;
+          if (!mergedMap.has(key)) {
+            mergedMap.set(key, item);
+          }
+        });
+
+        const merged = Array.from(mergedMap.values());
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(merged));
+        this.notify(merged);
+      }
+    } catch (err) {
+      console.warn('Gagal memuat dari Google Sheets, menggunakan cache lokal:', err);
     }
   },
 
-  // Add new wish
   async add(wishData) {
     const wishObject = {
+      id: 'wish-' + Date.now(),
       name: wishData.name.trim(),
       message: wishData.message.trim(),
       status: wishData.status || 'Hadir',
       timestamp: new Date().toISOString()
     };
 
-    if (this.isFirebaseActive && this.db && window.firebaseFirestore) {
-      const { collection, addDoc } = window.firebaseFirestore;
-      await addDoc(collection(this.db, 'wishes'), wishObject);
-    } else {
-      // Save to LocalStorage and notify all local listeners immediately
-      const updated = saveLocalWish({ id: 'local-' + Date.now(), ...wishObject });
-      this.notify(updated);
-      try { window.dispatchEvent(new Event('storage')); } catch(e) {}
-      return updated;
+    // 1. Simpan instan ke lokal agar langsung tampil di layar seketika
+    const updated = saveLocalWish(wishObject);
+    this.notify(updated);
+
+    // 2. Kirim otomatis ke Google Sheets
+    if (this.apiUrl && this.apiUrl.trim() !== '' && !this.apiUrl.includes('MASUKKAN_URL')) {
+      try {
+        await fetch(this.apiUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(wishObject)
+        });
+      } catch (err) {
+        console.warn('Gagal sinkron ke Google Sheets:', err);
+      }
     }
+
+    return updated;
   }
 };
