@@ -530,6 +530,84 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Handle wish form submission
+  if (wishForm) {
+    wishForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nameInput    = document.getElementById('wish-name-input');
+      const statusSelect  = document.getElementById('wish-status-select');
+      const messageInput = document.getElementById('wish-message-input');
+      const submitBtn    = wishForm.querySelector('.btn-submit-wish');
+
+      const name    = nameInput ? nameInput.value.trim() : '';
+      const status  = statusSelect ? statusSelect.value : 'Hadir';
+      const message = messageInput ? messageInput.value.trim() : '';
+
+      if (!name || !message) {
+        alert('Mohon isi nama dan ucapan Anda.');
+        return;
+      }
+
+      const originalBtnText = submitBtn ? submitBtn.textContent : 'Kirim Ucapan';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Mengirim Ucapan...';
+      }
+
+      try {
+        if (window.WishesService && typeof window.WishesService.add === 'function') {
+          await window.WishesService.add({ name, status, message });
+        } else {
+          const newWish = {
+            id: 'wish-' + Date.now(),
+            name,
+            status,
+            message,
+            timestamp: new Date().toISOString()
+          };
+          const existing = JSON.parse(localStorage.getItem('yusron_zia_wedding_wishes') || '[]');
+          const updated = [newWish, ...existing];
+          localStorage.setItem('yusron_zia_wedding_wishes', JSON.stringify(updated));
+          renderWishes(updated);
+        }
+
+        // Reset inputs
+        if (nameInput) nameInput.value = '';
+        if (messageInput) messageInput.value = '';
+
+        if (submitBtn) {
+          submitBtn.textContent = 'Ucapan Terkirim! 🤍';
+          submitBtn.style.backgroundColor = '#ACA86C';
+        }
+
+        // Smooth scroll to wishes feed
+        setTimeout(() => {
+          if (wishesFeed) {
+            wishesFeed.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }, 150);
+
+        setTimeout(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+            submitBtn.style.backgroundColor = '';
+          }
+        }, 2500);
+
+      } catch (err) {
+        console.error('Error submitting wish:', err);
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+          submitBtn.style.backgroundColor = '';
+        }
+        alert('Maaf, terjadi kendala saat mengirim ucapan. Silakan coba lagi.');
+      }
+    });
+  }
+
   // ==========================================================================
   // NAVBAR SCROLLSPY
   // ==========================================================================
