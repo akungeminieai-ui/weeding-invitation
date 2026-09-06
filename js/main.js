@@ -364,6 +364,18 @@ document.addEventListener('DOMContentLoaded', () => {
     openInvitation();
   });
 
+  const coverClickHint = document.getElementById('cover-click-hint');
+  if (coverClickHint) {
+    coverClickHint.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openInvitation();
+    });
+    coverClickHint.addEventListener('touchend', (e) => {
+      e.stopPropagation();
+      openInvitation();
+    });
+  }
+
   // Eagerly set up gesture unlock so music starts on first user interaction
   enablePlayOnFirstInteraction();
 

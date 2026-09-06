@@ -196,6 +196,46 @@ button {
   }
 }
 
+/* KLIK DISINI HINT (WELCOME SCREEN) */
+.cover-click-hint {
+  position: absolute;
+  bottom: clamp(2.5rem, 8vh, 5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10001;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  animation: coverPulse 2.2s ease-in-out infinite;
+}
+
+.cover-click-hint:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+.cover-click-img {
+  width: 48px;
+  height: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: auto;
+}
+
+@keyframes coverPulse {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.08);
+    opacity: 1;
+  }
+}
+
 .cover-sub {
   font-size: 0.9rem;
   letter-spacing: 0.2em;
